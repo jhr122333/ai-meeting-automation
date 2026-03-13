@@ -18,6 +18,67 @@ interface HistoryItem {
   execReport: string;
 }
 
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const buildDemoStaffReport = (filename: string) => `## 🎯 회의 세부 안건
+
+업로드된 **${filename}** 기준으로 AI가 데모 분석한 실무진용 보고서입니다. 실제 배포 버전에서는 회의 음성 내용을 기반으로 액션 아이템, 담당자, 마감 일정을 자동 정리합니다.
+
+## ✅ 액션 아이템 테이블 (Action Items)
+| 담당자 | 업무 내용 | 마감 기한 | 우선순위 |
+|---|---|---|---|
+| 김현우 | 회의 내용 바탕으로 1차 실행안 정리 | 03/15 | High |
+| 이수민 | 관련 부서 일정 재확인 및 공유 | 03/18 | Medium |
+| 박지훈 | 리스크 항목 업데이트 후 팀 슬랙 공유 | 03/19 | High |
+
+## 🛠 세부 논의 및 결정 사항
+
+- 현행 회의록 작성 방식은 사람별 정리 방식이 달라 결과물 편차가 큼
+- 보고 대상에 따라 상세본과 요약본을 따로 다시 써야 해서 시간이 이중으로 소요됨
+- 데모 버전에서는 업로드 이후 곧바로 비교 가능한 2종 문서를 생성하는 흐름을 보여줌
+
+## 🚀 향후 진행 절차 (Next Steps)
+
+1. 다음 회의부터 음성 파일 업로드를 표준 프로세스로 적용
+2. 실무진용 보고서는 담당자/마감일 중심으로 바로 실행
+3. 경영진용 요약본은 의사결정 포인트 중심으로 별도 공유`;
+
+const buildDemoExecReport = (filename: string) => `## 📊 경영 목표 및 요약 (Executive Summary)
+
+**${filename}**를 기반으로 생성된 데모용 경영진 보고서입니다. 실제 서비스에서는 회의 목적, 핵심 결론, 리스크와 필요한 리소스를 1페이지 요약 형식으로 자동 정리합니다.
+
+이번 데모의 핵심 메시지는 회의록 작성 시간을 줄이고, 보고 대상별 문서를 동시에 생성해 의사결정 속도를 높일 수 있다는 점입니다.
+
+## ⚠️ 리스크 및 리소스 관리 현황
+| 항목 분류 | 세부 내용 | 리소스 (예산/인력/일정) | 심각도 |
+|---|---|---|---|
+| 운영 | 보고서 포맷이 부서별로 달라 수기 조정 필요 | 운영 리드 1명, 주 2시간 | Medium |
+| 일정 | 회의 후 정리와 공유 사이 리드타임 발생 | 즉시 공유 프로세스 도입 필요 | High |
+| 실행 | 액션 아이템 누락 가능성 | 자동 추출 로직으로 보완 가능 | Medium |
+
+## 💡 핵심 전략 결정 (Key strategic decisions)
+
+- 회의 결과물은 실무진용과 경영진용을 분리해 동시에 생성한다
+- 데모 단계에서는 정적 사이트에서도 흐름을 충분히 보여줄 수 있도록 샘플 생성 방식을 사용한다
+- 향후 실제 운영 전환 시에는 실음성 분석 API와 연결해 자동 보고 체계로 확장한다`;
+
+async function streamDemoReport(
+  report: string,
+  setReport: React.Dispatch<React.SetStateAction<string>>,
+  setStreaming: React.Dispatch<React.SetStateAction<boolean>>,
+) {
+  let cursor = 0;
+
+  while (cursor < report.length) {
+    const nextChunk = Math.min(report.length, cursor + 36);
+    cursor = nextChunk;
+    setReport(report.slice(0, cursor));
+    await wait(28);
+  }
+
+  setStreaming(false);
+}
+
 function StreamingIndicator({
   tone,
 }: {
@@ -182,19 +243,6 @@ export default function MeetingAgentIndex() {
     setIsExecStreaming(false);
   };
 
-  const convertFileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const result = reader.result as string;
-        const base64String = result.split(',')[1];
-        resolve(base64String);
-      };
-      reader.onerror = (error) => reject(error);
-    });
-  };
-
   const copyToClipboard = (text: string, type: 'staff' | 'exec') => {
     navigator.clipboard.writeText(text);
     if (type === 'staff') {
@@ -231,92 +279,18 @@ export default function MeetingAgentIndex() {
     setExecReport("");
 
     try {
-      const base64Audio = await convertFileToBase64(file);
-      const mimeType = file.type;
+      const staffDemoReport = buildDemoStaffReport(file.name);
+      const execDemoReport = buildDemoExecReport(file.name);
 
-      const payload = JSON.stringify({
-        audioData: base64Audio,
-        mimeType: mimeType
-      });
+      await Promise.all([
+        streamDemoReport(staffDemoReport, setStaffReport, setIsStaffStreaming),
+        streamDemoReport(execDemoReport, setExecReport, setIsExecStreaming),
+      ]);
 
-      // Execute both agent requests in parallel
-      const staffPromise = fetch("/api/agent/meeting/staff", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: payload
-      });
-
-      const execPromise = fetch("/api/agent/meeting/exec", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: payload
-      });
-
-      // Handle streaming for Staff Agent
-      const staffTask = staffPromise.then(async (res) => {
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.error || "Staff API failed");
-        }
-        const reader = res.body?.getReader();
-        const decoder = new TextDecoder("utf-8");
-        let fullText = "";
-        while (reader) {
-          const { value, done } = await reader.read();
-          if (done) break;
-          // Clean Vercel AI SDK text stream markers
-          let chunk = decoder.decode(value, { stream: true });
-          chunk = chunk.replace(/0:"/g, "").replace(/"\n/g, "").replace(/\\n/g, '\n').replace(/\\"/g, '"');
-          fullText += chunk;
-          setStaffReport(fullText);
-        }
-        setIsStaffStreaming(false);
-      }).catch(err => {
-        console.error(err);
-        setStaffReport(`[오류 발생] 실무진 보고서 생성 실패:\n${err.message}`);
-        setIsStaffStreaming(false);
-      });
-
-      // Handle streaming for Exec Agent
-      const execTask = execPromise.then(async (res) => {
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.error || "Exec API failed");
-        }
-        const reader = res.body?.getReader();
-        const decoder = new TextDecoder("utf-8");
-        let fullText = "";
-        while (reader) {
-          const { value, done } = await reader.read();
-          if (done) break;
-          let chunk = decoder.decode(value, { stream: true });
-          chunk = chunk.replace(/0:"/g, "").replace(/"\n/g, "").replace(/\\n/g, '\n').replace(/\\"/g, '"');
-          fullText += chunk;
-          setExecReport(fullText);
-        }
-        setIsExecStreaming(false);
-      }).catch(err => {
-        console.error(err);
-        setExecReport(`[오류 발생] 경영진 보고서 생성 실패:\n${err.message}`);
-        setIsExecStreaming(false);
-      });
-
-      await Promise.allSettled([staffTask, execTask]);
-      
-      // Save logic after both are resolved and state is captured
-      // We need to wait slightly because setStaffReport is async in React 
-      // This is a workaround to get the latest emitted stream data
-      setTimeout(() => {
-         setStaffReport((currentStaff) => {
-           setExecReport((currentExec) => {
-             saveToHistory(file.name, currentStaff, currentExec);
-             return currentExec;
-           });
-           return currentStaff;
-         });
-      }, 500);
-
+      saveToHistory(file.name, staffDemoReport, execDemoReport);
     } catch (error) {
       console.error(error);
-      setErrorMsg("오디오 분석 중 컴파일 오류가 발생했습니다.");
+      setErrorMsg("데모 보고서 생성 중 오류가 발생했습니다.");
       setIsStaffStreaming(false);
       setIsExecStreaming(false);
     } finally {
