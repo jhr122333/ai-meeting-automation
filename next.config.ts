@@ -8,8 +8,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProd ? "/ai-meeting-automation" : "",
-  assetPrefix: isProd ? "/ai-meeting-automation" : undefined,
+  basePath: "",
+  assetPrefix: undefined,
 };
 
 export default nextConfig;
