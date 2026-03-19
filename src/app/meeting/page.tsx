@@ -24,6 +24,76 @@ interface HistoryItem {
 }
 
 // ────────────────────────────────────────────────────────────
+// 일러스트 아이콘 — 참고 이미지 스타일 (teal 포인트 + slate 선화)
+// ────────────────────────────────────────────────────────────
+const IconTeam = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <circle cx="15" cy="7.5" r="2.8" fill="#5eead4" stroke="#1e293b" strokeWidth="1.4"/>
+    <path d="M11.5 20c0-2.8 1.6-5 3.5-5s3.5 2.2 3.5 5" fill="#5eead4" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="9" cy="8" r="3.2" fill="#bfdbfe" stroke="#1e293b" strokeWidth="1.4"/>
+    <path d="M2.5 21c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" fill="#bfdbfe" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+  </svg>
+);
+const IconBriefcaseExec = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M9 8.5V7A3 3 0 0112 4h0a3 3 0 013 3v1.5" fill="#5eead4" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+    <rect x="2" y="8.5" width="20" height="12" rx="2" fill="#fde68a" stroke="#1e293b" strokeWidth="1.4"/>
+    <line x1="2" y1="14.5" x2="22" y2="14.5" stroke="#1e293b" strokeWidth="1.4"/>
+    <rect x="10" y="12.5" width="4" height="4" rx="1" fill="#5eead4" stroke="#1e293b" strokeWidth="1.4"/>
+  </svg>
+);
+const IconDocFormal = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M13 2H4a1 1 0 00-1 1v14a1 1 0 001 1h12a1 1 0 001-1V6l-4-4z" fill="#dbeafe" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M13 2v4h4" fill="#5eead4" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M6 9h8M6 12h8M6 15h5" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+  </svg>
+);
+const IconChat = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M16 2H4a1 1 0 00-1 1v8a1 1 0 001 1h3.5l2.5 3 2.5-3H16a1 1 0 001-1V3a1 1 0 00-1-1z" fill="#dbeafe" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M7 7h6M7 10h3" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="15.5" cy="14.5" r="2.5" fill="#5eead4" stroke="#1e293b" strokeWidth="1.4"/>
+    <path d="M14.7 14.5l.6.6 1.2-1.2" stroke="#1e293b" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+const IconAction = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <circle cx="10" cy="10" r="7.5" fill="#dbeafe" stroke="#1e293b" strokeWidth="1.5"/>
+    <circle cx="10" cy="10" r="4" fill="white" stroke="#1e293b" strokeWidth="1.2"/>
+    <circle cx="10" cy="10" r="1.5" fill="#5eead4" stroke="#1e293b" strokeWidth="1"/>
+    <path d="M11 2.8L8.5 9h3.5L9.5 17" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+const IconOfficialDoc = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M13 2H4a1 1 0 00-1 1v14a1 1 0 001 1h12a1 1 0 001-1V6l-4-4z" fill="#fef9c3" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M13 2v4h4" fill="#5eead4" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M6 9h8M6 12h6" stroke="#1e293b" strokeWidth="1.4" strokeLinecap="round"/>
+    <circle cx="8" cy="15.5" r="2" fill="#5eead4" stroke="#1e293b" strokeWidth="1.2"/>
+  </svg>
+);
+const IconChart = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <rect x="2" y="3" width="16" height="13" rx="2" fill="#fef9c3" stroke="#1e293b" strokeWidth="1.5"/>
+    <path d="M5 13l3-4 3 2 4-6" stroke="#1e293b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="5" cy="13" r="1.5" fill="#bfdbfe" stroke="#1e293b" strokeWidth="1"/>
+    <circle cx="8" cy="9" r="1.5" fill="#bfdbfe" stroke="#1e293b" strokeWidth="1"/>
+    <circle cx="11" cy="11" r="1.5" fill="#bfdbfe" stroke="#1e293b" strokeWidth="1"/>
+    <circle cx="15" cy="5" r="2" fill="#5eead4" stroke="#1e293b" strokeWidth="1.2"/>
+  </svg>
+);
+const IconShield = () => (
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 2L3 5.2v4.8c0 4.6 3 8.5 7 9.5 4-1 7-4.9 7-9.5V5.2L10 2z" fill="#fef9c3" stroke="#1e293b" strokeWidth="1.5" strokeLinejoin="round"/>
+    <path d="M10 8v3.5" stroke="#1e293b" strokeWidth="1.6" strokeLinecap="round"/>
+    <circle cx="10" cy="14" r="1" fill="#1e293b"/>
+    <circle cx="15.5" cy="3.5" r="2.5" fill="#5eead4" stroke="#1e293b" strokeWidth="1.2"/>
+    <path d="M14.7 3.5l.6.6 1.2-1.2" stroke="#1e293b" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// ────────────────────────────────────────────────────────────
 // 포맷 정의 — 실무진용
 // ────────────────────────────────────────────────────────────
 type FormatId = "conversation" | "formal" | "action";
@@ -39,21 +109,21 @@ interface ReportFormat {
 const STAFF_FORMATS: ReportFormat[] = [
   {
     id: "formal",
-    icon: <LayoutList className="w-5 h-5" />,
+    icon: <IconDocFormal />,
     name: "공식 문서형",
     desc: "기안·결재용 A4 보고서 스타일",
     preview: "제 목: 회의록 자동화 도입 검토\n1. 개요\n2. 현황 분석\n3. 결론 및 건의",
   },
   {
     id: "conversation",
-    icon: <MessageSquare className="w-5 h-5" />,
+    icon: <IconChat />,
     name: "대화형",
     desc: "발화자별 발언 + 액션 아이템",
     preview: "👤 김현우\n\"회의록 방식이 사람마다...\"\n✅ 할 일: 실행안 정리 → 3/15",
   },
   {
     id: "action",
-    icon: <Zap className="w-5 h-5" />,
+    icon: <IconAction />,
     name: "액션 중심형",
     desc: "할 일·담당자·기한 집중 정리",
     preview: "🔴 High | 김현우 | 3/15\n실행안 1차 정리 및 공유\n\n🟡 Medium | 이수민 | 3/18",
@@ -94,26 +164,104 @@ interface ExecReportFormat {
 const EXEC_FORMATS: ExecReportFormat[] = [
   {
     id: "official",
-    icon: <FileText className="w-5 h-5" />,
+    icon: <IconOfficialDoc />,
     name: "공식 문서형",
     desc: "결재·배포용 경영진 정식 보고서",
     preview: "제 목: AI 회의록 자동화 도입 검토\n1. 회의 개요\n2. 주요 논의사항\n3. 의사결정 및 후속조치",
   },
   {
     id: "summary",
-    icon: <TrendingUp className="w-5 h-5" />,
+    icon: <IconChart />,
     name: "핵심 요약형",
     desc: "KPI · 결과 · 후속조치 1페이지",
     preview: "| 항목 | 현재 → 개선 후 |\n|------|----------------|\n| 작성 시간 | 2h → 30min |\n| 배포 속도 | 48h → 즉시 |",
   },
   {
     id: "risk",
-    icon: <ShieldAlert className="w-5 h-5" />,
+    icon: <IconShield />,
     name: "리스크 중심형",
     desc: "리스크 등급 · 대응방안 · 기회요인",
     preview: "🔴 보안 이슈 → 내부 서버 전환\n🟡 도입 지연 → 담당자 지정\n🟢 기회: 전사 표준화 가능",
   },
 ];
+
+// ────────────────────────────────────────────────────────────
+// 보고서 마크다운 커스텀 렌더러
+// ────────────────────────────────────────────────────────────
+function getTextContent(node: React.ReactNode): string {
+  if (typeof node === "string") return node;
+  if (Array.isArray(node)) return node.map(getTextContent).join("");
+  if (React.isValidElement(node))
+    return getTextContent((node.props as { children?: React.ReactNode }).children);
+  return "";
+}
+
+function stripEmoji(children: React.ReactNode, emoji: string): React.ReactNode {
+  if (typeof children === "string") return children.replace(emoji, "").trimStart();
+  if (Array.isArray(children)) return children.map((c) => stripEmoji(c, emoji));
+  if (React.isValidElement(children)) {
+    const p = children.props as { children?: React.ReactNode };
+    return p.children ? React.cloneElement(children, {}, stripEmoji(p.children, emoji)) : children;
+  }
+  return children;
+}
+
+const reportMarkdownComponents = {
+  h3: ({ children }: { children?: React.ReactNode }) => {
+    const text = getTextContent(children);
+    if (text.startsWith("👤")) {
+      const name = text.replace(/^👤\s*/, "");
+      const initials = name.split(/[\s/]/).filter(Boolean).slice(0, 2).map((p) => p[0]).join("").toUpperCase();
+      return (
+        <div className="flex items-center gap-3 mt-6 mb-2">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-teal-100 to-blue-100 border border-teal-200 flex items-center justify-center shrink-0 shadow-sm">
+            <span className="text-[11px] font-bold text-teal-700">{initials || "?"}</span>
+          </div>
+          <span className="font-bold text-slate-800 text-base">{name}</span>
+        </div>
+      );
+    }
+    if (/^🔴/.test(text)) return (
+      <h3 className="flex items-center gap-2 font-semibold text-slate-800 mt-5 mb-2 text-sm">
+        <span className="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0 shadow-sm" />
+        {text.replace(/^🔴\s*/, "")}
+      </h3>
+    );
+    if (/^🟡/.test(text)) return (
+      <h3 className="flex items-center gap-2 font-semibold text-slate-800 mt-5 mb-2 text-sm">
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 shadow-sm" />
+        {text.replace(/^🟡\s*/, "")}
+      </h3>
+    );
+    if (/^🟢/.test(text)) return (
+      <h3 className="flex items-center gap-2 font-semibold text-slate-800 mt-5 mb-2 text-sm">
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0 shadow-sm" />
+        {text.replace(/^🟢\s*/, "")}
+      </h3>
+    );
+    if (/^📋/.test(text)) return (
+      <h3 className="font-bold text-slate-700 mt-5 mb-2 pb-1.5 border-b border-slate-200 flex items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2" fill="#e2e8f0" stroke="#475569" strokeWidth="1.2"/>
+          <path d="M3.5 4.5h7M3.5 7h7M3.5 9.5h4.5" stroke="#475569" strokeWidth="1.1" strokeLinecap="round"/>
+        </svg>
+        {text.replace(/^📋\s*/, "")}
+      </h3>
+    );
+    return <h3 className="font-bold text-slate-800 mt-4 mb-1">{children}</h3>;
+  },
+  li: ({ children }: { children?: React.ReactNode }) => {
+    const text = getTextContent(children);
+    if (text.includes("✅")) {
+      return (
+        <li className="flex items-start gap-2.5 my-1.5 pl-3 py-1 border-l-[3px] border-l-teal-400 list-none -ml-5">
+          <span className="text-sm text-slate-700">{stripEmoji(children, "✅")}</span>
+        </li>
+      );
+    }
+    return <li className="my-0.5 text-sm text-slate-700">{children}</li>;
+  },
+};
 
 // ────────────────────────────────────────────────────────────
 // 실무진용 데모 데이터
@@ -1732,6 +1880,7 @@ export default function MeetingAgentIndex() {
 
   const [historyList, setHistoryList] = useState<HistoryItem[]>([]);
   const [selectedHistoryId, setSelectedHistoryId] = useState<string | null>(null);
+  const [actionStatus, setActionStatus] = useState<Record<string, boolean>>({});
   const [processingStep, setProcessingStep] = useState<number>(-1);
   const [detectedFormat, setDetectedFormat] = useState<string>("");
   const [speakerCount] = useState<number>(3);
@@ -1744,6 +1893,10 @@ export default function MeetingAgentIndex() {
     const saved = localStorage.getItem("meetingHistory");
     if (saved) {
       try { setHistoryList(JSON.parse(saved)); } catch { /* ignore */ }
+    }
+    const savedStatus = localStorage.getItem("actionItemStatus");
+    if (savedStatus) {
+      try { setActionStatus(JSON.parse(savedStatus)); } catch { /* ignore */ }
     }
   }, []);
 
@@ -1788,6 +1941,38 @@ export default function MeetingAgentIndex() {
       setExecReport("");
       setErrorMsg("");
     }
+  };
+
+  const extractActionItems = (text: string): string[] => {
+    const items: string[] = [];
+    for (const line of text.split("\n")) {
+      const t = line.trim();
+      if (/^-\s*\[[ x]\]\s+.+/.test(t)) {
+        items.push(t.replace(/^-\s*\[[ x]\]\s+/, "").trim());
+      } else if (/^[🔴🟡🟢]\s*.+/.test(t)) {
+        items.push(t.replace(/^[🔴🟡🟢]\s*/, "").trim());
+      } else if (/✅/.test(t)) {
+        // ✅ **할 일:** content 또는 ✅ Action: content 패턴
+        const cleaned = t
+          .replace(/^[-*]\s*/, "")
+          .replace(/✅\s*/, "")
+          .replace(/\*\*(할 일|Action)[：:]\*?\*?\s*/, "")
+          .replace(/\*\*/g, "")
+          .trim();
+        if (cleaned.length > 3) items.push(cleaned);
+      } else if (/^(할 일|Action)[:：]\s*.+/.test(t)) {
+        items.push(t.replace(/^(할 일|Action)[:：]\s*/, "").trim());
+      }
+    }
+    return items.filter(i => i.length > 3);
+  };
+
+  const toggleActionItem = (key: string) => {
+    setActionStatus(prev => {
+      const next = { ...prev, [key]: !prev[key] };
+      localStorage.setItem("actionItemStatus", JSON.stringify(next));
+      return next;
+    });
   };
 
   const startNewUpload = () => {
@@ -2005,7 +2190,7 @@ export default function MeetingAgentIndex() {
 
       <main className="flex-1 p-6 max-w-[1600px] mx-auto w-full flex gap-8">
         {/* Left Sidebar */}
-        <aside className="w-80 shrink-0 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col h-[calc(100vh-6rem)] sticky top-24">
+        <aside className="w-80 shrink-0 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 flex flex-col h-[calc(100vh-6rem)] sticky top-24 overflow-y-auto">
           <button
             onClick={startNewUpload}
             className={`w-full py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all mb-6
@@ -2013,6 +2198,135 @@ export default function MeetingAgentIndex() {
           >
             <Mic className="w-5 h-5" /> 새 회의록 작성
           </button>
+
+          {/* 회의 요약 통계 */}
+          {(() => {
+            const now = new Date();
+            const startOfWeek = new Date(now);
+            startOfWeek.setDate(now.getDate() - now.getDay());
+            startOfWeek.setHours(0, 0, 0, 0);
+            const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+            const total = historyList.length;
+            const weekly = historyList.filter(i => new Date(Number(i.id)) >= startOfWeek).length;
+            const monthly = historyList.filter(i => new Date(Number(i.id)) >= startOfMonth).length;
+            return (
+              <div className="grid grid-cols-3 gap-2 mb-5">
+                {[
+                  { label: "전체", value: total },
+                  { label: "이번 주", value: weekly },
+                  { label: "이번 달", value: monthly },
+                ].map(({ label, value }) => (
+                  <div key={label} className="bg-slate-50 rounded-xl p-3 text-center border border-slate-100">
+                    <p className="text-xl font-extrabold text-teal-600">{value}</p>
+                    <p className="text-[10px] text-slate-400 mt-0.5">{label}</p>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+
+          {/* 템플릿 사용 분포 */}
+          {historyList.length > 0 && (() => {
+            const staffCounts = { formal: 0, conversation: 0, action: 0 };
+            const execCounts = { official: 0, summary: 0, risk: 0 };
+            historyList.forEach(i => {
+              if (i.staffFormatId && staffCounts[i.staffFormatId] !== undefined) staffCounts[i.staffFormatId as keyof typeof staffCounts]++;
+              if (i.execFormatId && execCounts[i.execFormatId] !== undefined) execCounts[i.execFormatId as keyof typeof execCounts]++;
+            });
+            const staffTotal = Object.values(staffCounts).reduce((a, b) => a + b, 0) || 1;
+            const execTotal = Object.values(execCounts).reduce((a, b) => a + b, 0) || 1;
+            const staffRows = [
+              { id: "formal", label: "공식 문서형", count: staffCounts.formal },
+              { id: "conversation", label: "대화형", count: staffCounts.conversation },
+              { id: "action", label: "액션 중심형", count: staffCounts.action },
+            ];
+            const execRows = [
+              { id: "official", label: "공식 문서형", count: execCounts.official },
+              { id: "summary", label: "핵심 요약형", count: execCounts.summary },
+              { id: "risk", label: "리스크 중심형", count: execCounts.risk },
+            ];
+            return (
+              <div className="mb-5 space-y-3">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-1">템플릿 사용 분포</p>
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 space-y-2">
+                  <p className="text-[10px] text-blue-500 font-semibold mb-1">실무진용</p>
+                  {staffRows.map(({ label, count }) => (
+                    <div key={label}>
+                      <div className="flex justify-between text-[10px] text-slate-500 mb-0.5">
+                        <span>{label}</span><span>{count}</span>
+                      </div>
+                      <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-400 rounded-full transition-all" style={{ width: `${(count / staffTotal) * 100}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 space-y-2">
+                  <p className="text-[10px] text-amber-500 font-semibold mb-1">경영진용</p>
+                  {execRows.map(({ label, count }) => (
+                    <div key={label}>
+                      <div className="flex justify-between text-[10px] text-slate-500 mb-0.5">
+                        <span>{label}</span><span>{count}</span>
+                      </div>
+                      <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                        <div className="h-full bg-amber-400 rounded-full transition-all" style={{ width: `${(count / execTotal) * 100}%` }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* 액션 아이템 현황 */}
+          {historyList.length > 0 && (() => {
+            const allItems: { key: string; text: string; meeting: string }[] = [];
+            historyList.forEach(item => {
+              const combined = [item.staffReport, item.execReport].join("\n");
+              extractActionItems(combined).forEach((text, idx) => {
+                allItems.push({ key: `${item.id}::${idx}`, text, meeting: item.filename });
+              });
+            });
+            if (allItems.length === 0) return null;
+            const done = allItems.filter(i => actionStatus[i.key]).length;
+            const total = allItems.length;
+            return (
+              <div className="mb-5">
+                <div className="flex items-center justify-between mb-2 px-1">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">액션 아이템</p>
+                  <span className="text-[10px] font-semibold text-teal-600 bg-teal-50 px-2 py-0.5 rounded-full">
+                    {done}/{total} 완료
+                  </span>
+                </div>
+                {/* 진행 바 */}
+                <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden mb-3">
+                  <div className="h-full bg-teal-400 rounded-full transition-all duration-500"
+                    style={{ width: `${total > 0 ? (done / total) * 100 : 0}%` }} />
+                </div>
+                <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                  {allItems.map(({ key, text, meeting }) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => toggleActionItem(key)}
+                      className="w-full flex items-start gap-2 p-2 rounded-lg hover:bg-slate-50 transition-all text-left group"
+                    >
+                      <div className={`shrink-0 mt-0.5 w-4 h-4 rounded border-2 flex items-center justify-center transition-all
+                        ${actionStatus[key] ? "bg-teal-500 border-teal-500" : "border-slate-300 group-hover:border-teal-400"}`}>
+                        {actionStatus[key] && <CheckCircle2 className="w-3 h-3 text-white" />}
+                      </div>
+                      <div className="min-w-0">
+                        <p className={`text-[11px] leading-tight transition-all ${actionStatus[key] ? "line-through text-slate-400" : "text-slate-600"}`}>
+                          {text.length > 40 ? text.slice(0, 40) + "…" : text}
+                        </p>
+                        <p className="text-[9px] text-slate-300 truncate mt-0.5">{meeting}</p>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
 
           <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-2">최근 생성 기록</h3>
           <div className="flex-1 overflow-y-auto pr-2 space-y-2">
@@ -2145,8 +2459,8 @@ export default function MeetingAgentIndex() {
                 className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col h-[700px]">
                 <div className="bg-slate-50 border-b border-slate-200 px-8 py-5 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 shadow-sm border border-blue-200/50">
-                      <Users className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-50 to-teal-50 flex items-center justify-center shadow-sm border border-blue-100">
+                      <IconTeam />
                     </div>
                     <div>
                       <h3 className="font-bold text-slate-800 text-lg mb-0.5">실무진용 (Staff) 보고서</h3>
@@ -2238,7 +2552,7 @@ export default function MeetingAgentIndex() {
                   {staffReport ? (
                     <div className="space-y-6">
                       {isStaffStreaming && <StreamingIndicator tone="blue" />}
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{staffReport}</ReactMarkdown>
+                      <ReactMarkdown remarkPlugins={[remarkGfm]} components={reportMarkdownComponents as object}>{staffReport}</ReactMarkdown>
                     </div>
                   ) : (
                     <div className="h-full flex flex-col items-center justify-center text-slate-400 space-y-4 opacity-50">
@@ -2257,8 +2571,8 @@ export default function MeetingAgentIndex() {
                 className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col h-[700px]">
                 <div className="bg-amber-50/50 border-b border-amber-100 px-8 py-5 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 shadow-sm border border-amber-200/50">
-                      <Briefcase className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-50 to-teal-50 flex items-center justify-center shadow-sm border border-amber-100">
+                      <IconBriefcaseExec />
                     </div>
                     <div>
                       <h3 className="font-bold text-slate-800 text-lg mb-0.5">경영진용 (Executive) 보고서</h3>
@@ -2350,7 +2664,7 @@ export default function MeetingAgentIndex() {
                   {execReport ? (
                     <div className="space-y-6">
                       {isExecStreaming && <StreamingIndicator tone="amber" />}
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{execReport}</ReactMarkdown>
+                      <ReactMarkdown remarkPlugins={[remarkGfm]} components={reportMarkdownComponents as object}>{execReport}</ReactMarkdown>
                     </div>
                   ) : (
                     <div className="h-full flex flex-col items-center justify-center text-slate-400 space-y-4 opacity-50">
